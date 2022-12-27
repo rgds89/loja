@@ -2,7 +2,6 @@ package br.com.alura.loja.modelo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
     private BigDecimal valorTotal;
     private LocalDate data = LocalDate.now();
     @ManyToOne
@@ -30,7 +29,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 

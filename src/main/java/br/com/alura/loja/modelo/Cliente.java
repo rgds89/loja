@@ -1,14 +1,13 @@
 package br.com.alura.loja.modelo;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "clientes")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
     private String name;
     private String inscricao;
 
@@ -20,7 +19,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
