@@ -10,6 +10,7 @@ import br.com.alura.loja.modelo.*;
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 public class CadastroDePedido {
     private static final EntityManagerConfig ENTITY_MANAGER_CONFIG = new EntityManagerConfig();
@@ -40,7 +41,18 @@ public class CadastroDePedido {
 
         printValorTotalPedido(em);
 
+        printRelatorioVendas(em);
+
         ENTITY_MANAGER_CONFIG.closeTransaction(em);
+    }
+
+    private static void printRelatorioVendas(EntityManager em){
+        List<Object[]> relatorio = pedidoBusiness.relatorioVendas(em);
+        for (Object[] obj: relatorio){
+            System.out.println("Produto:" + obj[0]);
+            System.out.println("Quantidade: " + obj[1]);
+            System.out.println("Ultima Venda: " + obj[2]);
+        }
     }
 
     private static void printValorTotalPedido(EntityManager em) {

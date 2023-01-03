@@ -5,6 +5,7 @@ import br.com.alura.loja.modelo.Pedido;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class PedidoBusiness {
     public void cadastrarPedido(Pedido pedido, EntityManager em) {
@@ -20,5 +21,10 @@ public class PedidoBusiness {
     public BigDecimal valotTotalPedido(EntityManager em) {
         PedidoDao pedidoDao = new PedidoDao(em);
         return pedidoDao.valorTotalVendido();
+    }
+
+    public List<Object[]> relatorioVendas(EntityManager em){
+        PedidoDao pedidoDao = new PedidoDao(em);
+        return pedidoDao.relatorioVendas();
     }
 }
