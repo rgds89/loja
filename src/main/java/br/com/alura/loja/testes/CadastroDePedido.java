@@ -38,10 +38,17 @@ public class CadastroDePedido {
 
         printPedido(em);
 
+        printValorTotalPedido(em);
+
         ENTITY_MANAGER_CONFIG.closeTransaction(em);
     }
 
-    private static void printPedido(EntityManager em){
+    private static void printValorTotalPedido(EntityManager em) {
+        BigDecimal valorTotal = pedidoBusiness.valotTotalPedido(em);
+        System.out.println(valorTotal);
+    }
+
+    private static void printPedido(EntityManager em) {
         Pedido pedido = buscaPedido(em);
         System.out.println(pedido.getValorTotal());
     }
@@ -54,7 +61,7 @@ public class CadastroDePedido {
         return clienteBusiness.buscarClientePorId(1L, em);
     }
 
-    private static Pedido buscaPedido(EntityManager em){
+    private static Pedido buscaPedido(EntityManager em) {
         return pedidoBusiness.buscarPedidoPorId(1L, em);
     }
 
