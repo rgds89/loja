@@ -14,7 +14,7 @@ public class Pedido {
     private Long id;
     private BigDecimal valorTotal;
     private LocalDate data = LocalDate.now();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
