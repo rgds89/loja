@@ -6,6 +6,7 @@ import br.com.alura.loja.business.PedidoBusiness;
 import br.com.alura.loja.business.ProdutoBusiness;
 import br.com.alura.loja.config.EntityManagerConfig;
 import br.com.alura.loja.modelo.*;
+import br.com.alura.loja.vo.RelatorioVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -47,12 +48,8 @@ public class CadastroDePedido {
     }
 
     private static void printRelatorioVendas(EntityManager em){
-        List<Object[]> relatorio = pedidoBusiness.relatorioVendas(em);
-        for (Object[] obj: relatorio){
-            System.out.println("Produto:" + obj[0]);
-            System.out.println("Quantidade: " + obj[1]);
-            System.out.println("Ultima Venda: " + obj[2]);
-        }
+        List<RelatorioVendasVo> relatorio = pedidoBusiness.relatorioVendas(em);
+        relatorio.forEach(System.out::println);
     }
 
     private static void printValorTotalPedido(EntityManager em) {

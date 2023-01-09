@@ -2,6 +2,7 @@ package br.com.alura.loja.business;
 
 import br.com.alura.loja.dao.PedidoDao;
 import br.com.alura.loja.modelo.Pedido;
+import br.com.alura.loja.vo.RelatorioVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -23,7 +24,7 @@ public class PedidoBusiness {
         return pedidoDao.valorTotalVendido();
     }
 
-    public List<Object[]> relatorioVendas(EntityManager em){
+    public List<RelatorioVendasVo> relatorioVendas(EntityManager em){
         PedidoDao pedidoDao = new PedidoDao(em);
         return pedidoDao.relatorioVendas();
     }
